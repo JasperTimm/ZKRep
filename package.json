@@ -1,0 +1,29 @@
+{
+  "name": "zkrep",
+  "version": "1.0.0",
+  "description": "Track a user's reputation in a zero knowledge way",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JasperTimm/ZKRep.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JasperTimm/ZKRep/issues"
+  },
+  "homepage": "https://github.com/JasperTimm/ZKRep#readme",
+  "dependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.5",
+    "@nomiclabs/hardhat-etherscan": "^3.0.3",
+    "@typechain/hardhat": "^6.0.0",
+    "hardhat": "^2.9.3",
+    "hardhat-gas-reporter": "^1.0.8",
+    "ts-node": "^10.7.0",
+    "typechain": "^8.0.0",
+    "typescript": "^4.6.3"
+  }
+}
