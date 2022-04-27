@@ -1,4 +1,4 @@
-import { Field, SmartContract, state, State, method, Poseidon, CircuitValue, prop, Bool } from 'snarkyjs';
+import { Mina, Field, SmartContract, state, State, method, Poseidon, CircuitValue, prop, Bool, PrivateKey } from 'snarkyjs';
 
 /**
  * 
@@ -15,7 +15,7 @@ class ResultEvent extends CircuitValue {
   }
 }
 
-export default class ZKRep extends SmartContract {
+class ZKRep extends SmartContract {
   @state(Field) rep = State<Field>();
 
   // initialization
@@ -39,3 +39,24 @@ export default class ZKRep extends SmartContract {
   }
 
 }
+
+
+// setup
+const Local = Mina.LocalBlockchain();
+Mina.setActiveInstance(Local);
+const account1 = Local.testAccounts[0].privateKey;
+
+async function deploy() {
+  const snappPrivkey = PrivateKey.random();
+  let snappAddress = snappPrivkey.toPublicKey();
+
+  let snapp = new ZKRep(snappAddress);
+  let tx = Mina.transaction(account1, async () => {
+    console.log('Deploying ZKRep...');
+    snapp.deploy();
+  });
+
+  await tx.send().wait();
+}
+
+export { deploy };
